@@ -1,0 +1,11 @@
+.product span {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 5px;
+  color: rgb(117, 75, 11);
+}
+
+.btn-buyNow {
+  background-color: rgb(112, 228, 228);
+  font-weight: 600;
+}

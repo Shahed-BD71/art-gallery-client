@@ -1,0 +1,43 @@
+.footer-area {
+  background-image: url(../../../../images/footer-img.png);
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-area li {
+  padding-bottom: 10px;
+  font-weight: 400;
+}
+
+.social-media .icon {
+  height: 40px;
+  width: 40px;
+  color: #1cc7c1;
+  border-radius: 50%;
+  border: 1px solid #6acece;
+  padding: 8px;
+  margin: 8px;
+}
+.social-media .active-icon {
+  background-color: #6acece;
+  color: white;
+}
+
+.social-media .icon:hover {
+  color: #f36868;
+  text-decoration: none;
+}
+
+/* clearfix */
+.group:before,
+.group::after {
+  content: "";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  zoom: 1;
+}

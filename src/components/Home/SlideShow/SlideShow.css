@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
+
+.each-slide > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 350px;
+}
+
+.each-slide span {
+  font-size: 40px;
+  text-align: center;
+  background: rgba(8, 10, 2, 0.966);
+  color: rgb(90, 224, 218);
+  padding: 20px;
+  opacity: 0.7;
+  border-radius: 5px;
+  font-family: "Muli", sans-serif;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 600px) {
+  .each-slide span {
+    font-size: 30px;
+  }
+}
