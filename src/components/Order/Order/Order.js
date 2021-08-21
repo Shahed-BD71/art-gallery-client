@@ -14,6 +14,7 @@ const Order = () => {
 
     return (
         <div className='container'>
+           <h3>Your Order</h3>
             <div className='row'>
                 {
                     Order.map(order => <OrderItem order={order}></OrderItem>)
