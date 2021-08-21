@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
+import Footer from '../../Shared/Footer/Footer/Footer';
+import Navbar from '../../Shared/Navbar/Navbar';
 
 
 const ProductDetails = () => {
@@ -23,8 +25,9 @@ const handleSubmit = (pd) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(orderData)
     })
-       .then(data => {
-        history.replace('/');
+    .then(data => {
+     alert('Your order is successfully done')
+     history.replace('/shipment');
     });
     } else {
         alert("Please set a quantity(only positive value)")
@@ -54,9 +57,11 @@ useEffect(() => {
      }, [id])
 
     return (
-        <div className=" container justify-content-center mt-5">
+        <section>
+          <Navbar/>
+          <div className=" container justify-content-center mt-5">
             <h3 className='text-center'>Details & Order</h3>
-               <form className=" bg-light p-5 m-5" onSubmit={handleSubmit}>
+            <form className=" bg-light p-5 m-5" onSubmit={handleSubmit}>
                   <h5>{product.name}</h5>
                   <br></br>
                   <p><span className="fw-bold me-2">Details: 
@@ -65,8 +70,10 @@ useEffect(() => {
                   <input type="number" name="quantity" placeholder="Quantity" onChange={handleQuantityChange}></input>
                   <br></br>
                    <button className="btn btn-primary mt-2">Order Now</button>
-                </form>
-        </div> 
+            </form>
+          </div>
+          <Footer></Footer>
+        </section> 
     );
 };
 
