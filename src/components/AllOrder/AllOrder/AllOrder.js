@@ -6,7 +6,7 @@ const AllOrder = () => {
   console.log(orders)
 
   useEffect(() => {
-    fetch("http://localhost:8000/orders")
+    fetch("https://warm-peak-57266.herokuapp.com/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);

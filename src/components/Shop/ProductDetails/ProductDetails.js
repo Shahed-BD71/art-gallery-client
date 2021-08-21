@@ -18,7 +18,7 @@ const ProductDetails = () => {
 const handleSubmit = (pd) => {
     pd.preventDefault();
     if (orderData.quantity >= 1) {
-    fetch('http://localhost:8000/order', {
+    fetch('https://warm-peak-57266.herokuapp.com/order', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(orderData)
@@ -40,7 +40,7 @@ const handleQuantityChange = (pd) => {
 
 
 useEffect(() => {
-   fetch(`http://localhost:8000/product/${id}`)
+   fetch(`https://warm-peak-57266.herokuapp.com/product/${id}`)
      .then(res => res.json())
      .then(data => {
          setProduct(data)

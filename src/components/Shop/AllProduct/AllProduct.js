@@ -8,7 +8,7 @@ import Navbar from '../../Shared/Navbar/Navbar';
 import Footer from '../../Shared/Footer/Footer/Footer';
 
 // const addAllProduct = () => {
-//     fetch('http://localhost:8000/addProducts', {
+//     fetch('https://warm-peak-57266.herokuapp.com/addProducts', {
 //         method: 'POST',
 //         headers: { 'Content-Type': 'application/json' },
 //         body: JSON.stringify(productData)
@@ -28,7 +28,7 @@ const AllProduct = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:8000/products`)
+    fetch(`https://warm-peak-57266.herokuapp.com/products`)
       .then((res) => res.json())
       .then((data) => setAllProduct(data));
   }, []);

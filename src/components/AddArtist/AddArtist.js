@@ -28,7 +28,7 @@ const [info, setInfo] = useState({});
     formData.append("instagram", info.instagram);
     formData.append("phone", info.phone);
 
-    fetch(`http://localhost:8000/addArtist`, {
+    fetch(`https://warm-peak-57266.herokuapp.com/addArtist`, {
       method: "POST",
       mode: "no-cors",
       headers : { 

@@ -24,7 +24,7 @@ const AddProduct = () => {
     formData.append("description", product.description);
     formData.append("price", product.price);
 
-    fetch('http://localhost:8000/addProducts', {
+    fetch('https://warm-peak-57266.herokuapp.com/addProducts', {
       method: "POST",
       mode: 'no-cors',
       headers: {

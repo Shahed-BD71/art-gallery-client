@@ -32,7 +32,7 @@ const Shipment = () => {
     };
 
 
-    fetch(`http://localhost:8000/order`, {
+    fetch(`https://warm-peak-57266.herokuapp.com/order`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -74,8 +74,8 @@ const Navbar = ({ countCartItems, name, handleLogOut}) => {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link active text-dark" exact to="login">
-                {userName || user.name ? (
-                  userName || user.name
+                {userName  ? (
+                  userName 
                 ) : (
                   <span>Registration</span>
                 )}

@@ -4,7 +4,7 @@ import ArtistDetails from './ArtistDetails'
 import artistData from './ArtistData'
 
 // const addArtist = () => {
-//     fetch('http://localhost:8000/addArtists', {
+//     fetch('https://warm-peak-57266.herokuapp.com/addArtists', {
 //         method: 'POST',
 //         headers: { 'Content-Type': 'application/json' },
 //         body: JSON.stringify(artistData)
@@ -18,7 +18,7 @@ const Artist = () => {
   console.log(artists);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/artists`)
+    fetch(`https://warm-peak-57266.herokuapp.com/artists`)
       .then((res) => res.json())
       .then((data) => setArtists(data));
   }, []);

@@ -19,7 +19,6 @@ function App() {
   const [loggedInUser, setLoggedInUser, cartItems] = useState({});
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser, cartItems]}>
-      <h6>email: {loggedInUser.email}</h6>
       <Router>
         <Switch>
           <Route exact path="/">
