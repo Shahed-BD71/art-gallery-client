@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
-import SingleProduct from './SingleProduct';
 
 
 const ProductDetails = () => {
     const { id } = useParams();
     const history = useHistory();
     const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user)
     const [product, setProduct] = useState({});
     console.log(product)
     const [orderData, setOrderData] = useState({
-        // userName: user.name,
-        // email: user.email,
+        userName: user.name,
+        email: user.email,
         // img: product.image.img
     })
 
@@ -24,7 +24,6 @@ const handleSubmit = (pd) => {
     body: JSON.stringify(orderData)
     })
        .then(data => {
-        alert('Your order is successfully done')
         history.replace('/');
     });
     } else {
@@ -43,8 +42,17 @@ const handleQuantityChange = (pd) => {
 useEffect(() => {
    fetch(`http://localhost:8000/product/${id}`)
      .then(res => res.json())
-     .then(data => setProduct(data))
+     .then(data => {
+         setProduct(data)
+           const newOrderData = {...orderData}
+           newOrderData.name = data.name
+           newOrderData.price = data.price
+           newOrderData.img = data.img;
+           newOrderData.description = data.description;
+           setOrderData(newOrderData);
+       })
      }, [id])
+
     return (
         <div className=" container justify-content-center mt-5">
             <h3 className='text-center'>Details & Order</h3>
@@ -58,7 +66,7 @@ useEffect(() => {
                   <br></br>
                    <button className="btn btn-primary mt-2">Order Now</button>
                 </form>
-            </div> 
+        </div> 
     );
 };
 

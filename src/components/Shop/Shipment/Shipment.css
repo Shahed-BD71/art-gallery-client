@@ -1,0 +1,30 @@
+.ship-form{
+    margin:30px 100px;
+}
+.ship-form input {
+    display: block;
+    margin-top: 30px;
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 300px;
+}
+.error{
+    color: red;
+}
+.payment-area {
+    justify-content: center;
+    background-color: rgb(203, 245, 238);
+}
+
+.no-arrow {
+  -moz-appearance: textfield;
+}
+.no-arrow::-webkit-inner-spin-button {
+  display: none;
+}
+.no-arrow::-webkit-outer-spin-button,
+.no-arrow::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

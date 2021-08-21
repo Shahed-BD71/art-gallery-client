@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import OrderItem from '../OrderItem/OrderItem'
 
 const Order = () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const [Order, setOrder] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:8000/order/${user.email}`)
+            .then(res => res.json())
+            .then(data => setOrder(data))
+    }, [user.email])
+
+
     return (
-        <div>
-           <h3>order page</h3>
+        <div className='container'>
+            <div className='row'>
+                {
+                    Order.map(order => <OrderItem order={order}></OrderItem>)
+                }
+            </div>
         </div>
     );
 };

@@ -2,7 +2,10 @@ import React  from 'react';
 import { useState, useEffect } from "react";
 import Product from '../Product/Product'
 import './AllProduct.css'
+import { useHistory } from "react-router-dom";
 import productData from '../productData';
+import Navbar from '../../Shared/Navbar/Navbar';
+import Footer from '../../Shared/Footer/Footer/Footer';
 
 // const addAllProduct = () => {
 //     fetch('http://localhost:8000/addProducts', {
@@ -18,6 +21,11 @@ import productData from '../productData';
 const AllProduct = () => {
   const [allProduct, setAllProduct] = useState([]);
   console.log(allProduct);
+  const history = useHistory();
+
+  const addProduct = (pd) => {
+    history.push("/shipment");
+  };
 
   useEffect(() => {
     fetch(`http://localhost:8000/products`)
@@ -26,11 +34,12 @@ const AllProduct = () => {
   }, []);
 
     return (
-        <section className="m-5 py-4">
-            <h2 className="text-center text-secondary">Best Sellers</h2>
+      <section>
+        <div className="m-5 py-4">
+          <h2 className="text-center text-secondary">Best Sellers</h2>
           <div className='row'>
               {allProduct.length !==0 ? (
-                allProduct.map((pd) => (<Product pd={pd} key={pd._id}>
+                allProduct.map((pd) => (<Product pd={pd} addProduct={addProduct} key={pd._id}>
                 </Product>))
               ):(
              <div style={{ textAlign: "center", border: "none" }}>
@@ -40,7 +49,8 @@ const AllProduct = () => {
              </div>
               )}
           </div>
-        </section>
+        </div>
+      </section>
     );
 };
 

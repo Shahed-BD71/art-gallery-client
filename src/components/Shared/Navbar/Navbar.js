@@ -4,11 +4,11 @@ import './Navbar.css'
 import { useContext } from "react";
 import { UserContext } from "../../../App";
 
-// const user = JSON.parse(localStorage.getItem('user-info'))
+const user = JSON.parse(localStorage.getItem('user-info'))
 
 const Navbar = ({ countCartItems, name, handleLogOut}) => {
-//   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-//   let userName = loggedInUser.name;
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  let userName = loggedInUser.name;
   return (
     <nav
       style={{ backgroundColor: "rgb(78, 189, 70)" }}
@@ -63,8 +63,8 @@ const Navbar = ({ countCartItems, name, handleLogOut}) => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link text-dark active" exact to="/shop">
-                Shop
+              <NavLink className="nav-link text-dark active" exact to="/catalog">
+               Catalog
               </NavLink>
             </li>
             <li className="nav-item">
@@ -73,8 +73,12 @@ const Navbar = ({ countCartItems, name, handleLogOut}) => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link active text-dark" exact to="contact">
-                Contact Us
+              <NavLink className="nav-link active text-dark" exact to="login">
+                {userName || user.name ? (
+                  userName || user.name
+                ) : (
+                  <span>Registration</span>
+                )}
               </NavLink>
             </li>
           </ul>
