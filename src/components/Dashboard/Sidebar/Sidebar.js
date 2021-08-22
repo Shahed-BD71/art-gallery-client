@@ -68,7 +68,7 @@ const Sidebar = () => {
           </div>
         )}
       </ul>
-      <div>
+      <div className='mb-4'>
         <Link to="/" className="text-white">
           <FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span>
         </Link>

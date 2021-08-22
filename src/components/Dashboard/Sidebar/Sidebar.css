@@ -1,8 +1,10 @@
 .sidebar {
-  background-image: linear-gradient(40deg, #894792, #e058d9);
+  background-image: linear-gradient(40deg, #413a42, #4b464a);
   position: fixed;
   font-size: large;
   font-weight: 500;
+  margin-bottom: 20px;
+  height: auto;
 }
 .sidebar li {
   margin-bottom: 2em;

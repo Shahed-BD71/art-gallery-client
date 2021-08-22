@@ -13,6 +13,7 @@ import Order from './components/Order/Order/Order';
 import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 import Shipment from "./components/Shop/Shipment/Shipment";
 import AllOrder from './components/AllOrder/AllOrder/AllOrder'
+import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 
 export const UserContext = createContext();
 
@@ -46,6 +47,9 @@ function App() {
         </Route>
         <PrivateRoute exact path="/order">
             <Order></Order>
+        </PrivateRoute>
+        <PrivateRoute exact path="/dashboard">
+            <Dashboard/>
         </PrivateRoute>
         <PrivateRoute exact path="/allorder">
             <AllOrder></AllOrder>

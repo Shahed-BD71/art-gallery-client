@@ -11,8 +11,8 @@ function Login() {
   const [newUser, setNewUser] = useState(false);
   const [user, setUser] = useState({
     isSignedIn: false,
-    error: ' ',
-    success: ' ',
+    error: '',
+    success: '',
     name: '',
     email: '',
     password: '',
