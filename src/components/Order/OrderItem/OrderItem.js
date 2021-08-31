@@ -2,13 +2,9 @@ import React from 'react';
 import { useHistory } from 'react-router';
 
 const OrderItem = (props) => {
-    const {_id, userName, name, price, quantity, image} = props.order;
+    const {_id, name, price, quantity} = props.order;
     const history = useHistory();
     
-const addProduct = () => {
-    history.push("/shipment");
-  };
-
 const handleDelete = () => {
     fetch(`https://warm-peak-57266.herokuapp.com/deleteOrder/${_id}`, {
     method: "DELETE",
@@ -21,14 +17,13 @@ const handleDelete = () => {
       }
       return (
         <div className='col-md-4'>
-            <div className="text-center rounded shadow">
+            <div style={{backgroundColor: "#e6b7e8"}} className="text-center rounded shadow">
                 <div className="p-4">
                     <h4>{name}</h4>
                     <span>Price: ${price}</span>
                     <p>Quantity: {quantity}</p>
                     <div className="d-flex justify-content-around">
                       <button onClick={handleDelete} className='btn btn-danger'>Cancel Order</button>
-                      <button onClick={() => addProduct()}  className="btn btn-success">Buy Now</button>
                     </div>
                 </div>
             </div>

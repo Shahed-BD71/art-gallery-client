@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Navbar from '../../Shared/Navbar/Navbar'
 import "./Shipment.css";
 import { getDatabaseCart, processOrder } from "../../../utilities/databaseManager";
 import ProcessPayment from "./ProcessPayment/ProcessPayment";
+import { OrderContext } from "../../../App";
 const user = JSON.parse(localStorage.getItem('user'));
 
 const Shipment = () => {
   const { register, handleSubmit} = useForm();
+  const [orderData,setOrderData] = useContext(OrderContext);
+  console.log(orderData)
   const errors = {
     name: '',
     email: '',
@@ -18,24 +22,19 @@ const Shipment = () => {
 
   const handlePaymentSuccess = (paymentId) => {
     console.log("submitted", shippingData);
-    const savedCart = getDatabaseCart();
-    console.log(savedCart)
     const orderDetails = {
-      ...user,
-      products: savedCart,
+      products: orderData,
       shipment: shippingData,
       paymentId,
       orderTime: new Date(),
     };
 
-
-    fetch(`https://warm-peak-57266.herokuapp.com/order`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(orderDetails),
-    })
+    console.log(orderDetails)
+    fetch('https://warm-peak-57266.herokuapp.com/order', {
+       method: 'POST',
+       headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify(orderData)
+       })
       .then((res) => res.json())
       .then((data) => {
        console.log(data)

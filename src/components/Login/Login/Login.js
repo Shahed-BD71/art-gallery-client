@@ -88,7 +88,7 @@ function Login() {
   return (
     <section>
       <Navbar></Navbar>
-        {user.isSignedIn ? <button onClick={signOut}>Sign Out</button> : <Link to='/login'>Login in</Link>
+        {user ? <button onClick={signOut}>Sign Out</button> : <Link to='/login'>Login in</Link>
 }
       <div className='login-area'>
         <div className="text-center">

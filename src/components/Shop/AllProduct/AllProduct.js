@@ -20,12 +20,6 @@ import Footer from '../../Shared/Footer/Footer/Footer';
 
 const AllProduct = () => {
   const [allProduct, setAllProduct] = useState([]);
-  console.log(allProduct);
-  const history = useHistory();
-
-  const addProduct = (pd) => {
-    history.push("/shipment");
-  };
 
   useEffect(() => {
     fetch(`https://warm-peak-57266.herokuapp.com/products`)
@@ -39,7 +33,7 @@ const AllProduct = () => {
           <h2 className="text-center text-secondary">Best Sellers</h2>
           <div className='row'>
               {allProduct.length !==0 ? (
-                allProduct.map((pd) => (<Product pd={pd} addProduct={addProduct} key={pd._id}>
+                allProduct.map((pd) => (<Product pd={pd} key={pd._id}>
                 </Product>))
               ):(
              <div style={{ textAlign: "center", border: "none" }}>

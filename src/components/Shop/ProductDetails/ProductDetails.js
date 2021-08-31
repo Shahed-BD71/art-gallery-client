@@ -2,39 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import Footer from '../../Shared/Footer/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
+import { OrderContext } from "../../../App";
+import { useContext } from "react";
 
 
 const ProductDetails = () => {
     const { id } = useParams();
     const history = useHistory();
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user)
     const [product, setProduct] = useState({});
     console.log(product)
-    const [orderData, setOrderData] = useState({
-        userName: user.name,
-        email: user.email,
-        // img: product.image.img
-    })
+    const [orderData,setOrderData] = useContext(OrderContext);
+    console.log(orderData)
+
 
 const handleSubmit = (pd) => {
     pd.preventDefault();
     if (orderData.quantity >= 1) {
-    fetch('https://warm-peak-57266.herokuapp.com/order', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(orderData)
-    })
-    .then(data => {
-     alert('Your order is successfully done')
      history.replace('/shipment');
-    });
     } else {
         alert("Please set a quantity(only positive value)")
     }
-}
-
-     
+}   
 const handleQuantityChange = (pd) => {
    const newOrderData = { ...orderData };
    newOrderData.quantity = pd.target.value;
@@ -69,7 +58,7 @@ useEffect(() => {
                   <p className="fw-bold">Price: ${product.price}</p>
                   <input type="number" name="quantity" placeholder="Quantity" onChange={handleQuantityChange}></input>
                   <br></br>
-                   <button className="btn btn-primary mt-2">Order Now</button>
+                  <button className="btn btn-primary mt-2">Order Now</button>
             </form>
           </div>
           <Footer></Footer>

@@ -17,11 +17,14 @@ import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import NotFound from './NotFound'
 
 export const UserContext = createContext();
+export const OrderContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser, cartItems] = useState({});
+  const [orderData,setOrderData] = useState([]);
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser, cartItems]}>
+     <OrderContext.Provider value={[orderData,setOrderData]}>
       <Router>
         <Switch>
           <Route exact path="/">
@@ -59,6 +62,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      </OrderContext.Provider>
     </UserContext.Provider>
   );
 }

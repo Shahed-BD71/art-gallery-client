@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Product.css'
 
-const Product = ({pd, addProduct}) => {
+const Product = ({pd}) => {
     return (
         <section className='product col-md-3'>
           <div className="card my-4">
@@ -13,7 +13,7 @@ const Product = ({pd, addProduct}) => {
                 <h5 className="card-title">{pd.name}</h5>
                 <div className="d-flex justify-content-between">
                     <span>Price: ${pd.price}</span>
-                    <button onClick={() => addProduct(pd)}  className="btn btn-buyNow">Buy Now</button>
+                    <Link to={`/product/${pd._id}`}  className="btn btn-buyNow">Buy Now</Link>
                 </div>
             </div>
           </div>
