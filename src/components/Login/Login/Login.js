@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../../../App';
-import { useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { initializeLoginFramework, handleGoogleSignIn, handleSignOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from './loginManager';
 import './Login.css'
 import Navbar from '../../Shared/Navbar/Navbar';
@@ -29,10 +29,7 @@ function Login() {
   const googleSignIn = () => {
       handleGoogleSignIn()
       .then(res => {
-         handleResponse(res, true);
-        
-        const loggedInUser = {name: user.displayName, email: user.email, img: user.photoURL}
-        localStorage.setItem('user', JSON.stringify(loggedInUser));
+        handleResponse(res, true);
         history.replace(from)
       })
      
@@ -74,6 +71,7 @@ function Login() {
       createUserWithEmailAndPassword(user.name, user.email, user.password)
       .then(res => {
         handleResponse(res, true);
+        localStorage.setItem('user', JSON.stringify());
       })
     }
 
@@ -90,7 +88,7 @@ function Login() {
   return (
     <section>
       <Navbar></Navbar>
-        {user.isSignedIn ? <button onClick={signOut}>Sign Out</button> : <button>Login in</button>
+        {user.isSignedIn ? <button onClick={signOut}>Sign Out</button> : <Link to='/login'>Login in</Link>
 }
       <div className='login-area'>
         <div className="text-center">
@@ -117,14 +115,8 @@ function Login() {
                    <span className='btn-text' onClick={googleSignIn}>Continue with Google</span>
              </div>
             }
-            {
-                user.isSignedIn && <div>
-                <p>Welcome, {user.name}!</p>
-                <p>Your email: {user.email}</p>
-                <img src={user.photo} alt=""/>
-                </div>
-            }
-     </div>
+      
+       </div>
      <Footer/>
     </section>
      

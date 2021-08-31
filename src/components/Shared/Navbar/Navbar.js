@@ -1,21 +1,18 @@
 import React from "react";
 import { NavLink } from 'react-router-dom'
-import './Navbar.css'
-import { useContext } from "react";
-import { UserContext } from "../../../App";
+import './Navbar.css';
+const localData = localStorage.getItem('user');
+const data = JSON.parse(localData)
 
-const user = JSON.parse(localStorage.getItem('user-info'))
 
 const Navbar = ({ countCartItems, name, handleLogOut}) => {
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-  let userName = loggedInUser.name;
   return (
     <nav
       style={{ backgroundColor: "rgb(78, 189, 70)" }}
       className="navbar navbar-expand-lg navbar-dark"
     >
       <div className="container-fluid">
-        <NavLink className="navbar-brand fw-bold ms-3" to="#">
+        <NavLink className="navbar-brand fw-bold ms-3" to="/">
           Art Gallery
         </NavLink>
         <button
@@ -74,8 +71,8 @@ const Navbar = ({ countCartItems, name, handleLogOut}) => {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link active text-dark" exact to="login">
-                {userName  ? (
-                  userName 
+                {data ? (
+                  data.name 
                 ) : (
                   <span>Registration</span>
                 )}

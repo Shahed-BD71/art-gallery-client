@@ -18,11 +18,7 @@ const AllOrder = () => {
       </div>
       <div
         className="col-md-9 col-10"
-        style={{
-          position: "relative",
-          right: "12px",
-          backgroundColor: "#F4FDFB",
-        }}
+       
       >
         <h5 className="text-brand">All Orders</h5>
         <table className="table table-borderless">
@@ -33,15 +29,6 @@ const AllOrder = () => {
             </th>
             <th className="text-secondary" scope="col">
                 Name
-            </th>
-            <th className="text-secondary" scope="col">
-                Gender
-            </th>
-            <th className="text-secondary" scope="col">
-                Age
-            </th>
-            <th className="text-secondary" scope="col">
-                Weight
             </th>
             <th className="text-secondary" scope="col">
                 Phone
@@ -59,9 +46,6 @@ const AllOrder = () => {
           <tr>
             <td>{index + 1}</td>
             <td>{order.name}</td>
-            <td>{order.gender}</td>
-            <td>{order.age}</td>
-            <td>{order.weight}</td>
             <td>{order.phone}</td>
             <td>{order.email}</td>
             <td>{order.time}</td>

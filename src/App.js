@@ -14,6 +14,7 @@ import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 import Shipment from "./components/Shop/Shipment/Shipment";
 import AllOrder from './components/AllOrder/AllOrder/AllOrder'
 import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
+import NotFound from './NotFound'
 
 export const UserContext = createContext();
 
@@ -26,7 +27,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/product/:id">
+          <Route path="/product/:id">
             <ProductDetails></ProductDetails>
           </Route>
           <PrivateRoute exact path="/addproduct">
@@ -35,27 +36,30 @@ function App() {
           <Route exact path="/catalog">
             <AllProduct/>
           </Route>
-        </Switch>
-        <PrivateRoute exact path="/addartist">
+          <PrivateRoute exact path="/addartist">
             <AddArtist/>
-        </PrivateRoute>
-        <PrivateRoute exact path="/shipment">
+          </PrivateRoute>
+          <PrivateRoute exact path="/shipment">
             <Shipment/>
-        </PrivateRoute>
-        <Route exact path="/login">
+          </PrivateRoute>
+          <Route exact path="/login">
             <Login/>
-        </Route>
-        <PrivateRoute exact path="/order">
+          </Route>
+          <PrivateRoute exact path="/order">
             <Order></Order>
-        </PrivateRoute>
-        <PrivateRoute exact path="/dashboard">
+          </PrivateRoute>
+          <PrivateRoute exact path="/dashboard">
             <Dashboard/>
-        </PrivateRoute>
-        <PrivateRoute exact path="/allorder">
+          </PrivateRoute>
+          <PrivateRoute exact path="/allorder">
             <AllOrder></AllOrder>
-        </PrivateRoute>
-    </Router>
-  </UserContext.Provider>
+          </PrivateRoute>
+          <Route exact path="*">
+            <NotFound/>
+          </Route>
+        </Switch>
+      </Router>
+    </UserContext.Provider>
   );
 }
 

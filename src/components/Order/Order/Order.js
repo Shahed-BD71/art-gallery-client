@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Navbar from '../../Shared/Navbar/Navbar';
 import OrderItem from '../OrderItem/OrderItem'
 
 const Order = () => {
@@ -13,14 +14,15 @@ const Order = () => {
 
 
     return (
-        <div className='container'>
-           <h3>Your Order</h3>
-            <div className='row'>
+        <section>
+           <Navbar/>
+           <h3 className='text-center mt-5'><span className='text-info'>{user.name}'s </span>Order List</h3>
+            <div className='row justify-content-center m-5 mt-5'>
                 {
-                    Order.map(order => <OrderItem order={order}></OrderItem>)
+                  Order.map(order => <OrderItem order={order}></OrderItem>)
                 }
             </div>
-        </div>
+        </section>
     );
 };
 

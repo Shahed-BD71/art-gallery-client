@@ -15,13 +15,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = () => {
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const user = JSON.parse(localStorage.getItem('user'));
   const [isArtist, setIsArtist] = useState(false);
+  console.log(isArtist)
   useEffect(() => {
-    fetch(`https://beauty-saloon.herokuapp.com/isArtist`, {
+    fetch(`https://warm-peak-57266.herokuapp.com/isArtist`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ email: loggedInUser.email }),
+      body: JSON.stringify({ email: user.email }),
+      
     })
       .then((res) => res.json())
       .then((data) => setIsArtist(data));
@@ -34,19 +36,19 @@ const Sidebar = () => {
     >
       <ul className="list-unstyled">
         <li>
-          <Link to="/doctor/dashboard" className="text-white">
+          <Link to="/dashboard" className="text-white">
             <FontAwesomeIcon icon={faGripHorizontal} /> <span>Dashboard</span>
           </Link>
         </li>
         {isArtist && (
           <div>
             <li>
-              <Link to="/doctor/patients" className="text-white">
+              <Link to="/" className="text-white">
                 <FontAwesomeIcon icon={faUser} /> <span>Clients</span>
               </Link>
             </li>
             <li>
-              <Link to="/doctor/prescriptions" className="text-white">
+              <Link to="/allorder" className="text-white">
                 <FontAwesomeIcon icon={faFilter} /> <span>Orders</span>
               </Link>
             </li>
@@ -57,7 +59,7 @@ const Sidebar = () => {
             </li>
             <li>
               <Link to="/addProduct" className="text-white">
-                <FontAwesomeIcon icon={faUserPlus} /> <span>Add An Artist</span>
+                <FontAwesomeIcon icon={faUserPlus} /> <span>Add An Product</span>
               </Link>
             </li>
             <li>

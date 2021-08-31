@@ -28,8 +28,8 @@ export const handleGoogleSignIn = () => {
         photo: photoURL,
         success: true
       };
-      
       setUserToken();
+      localStorage.setItem('user', JSON.stringify(signedInUser));
       return signedInUser;
     })
     .catch(err => {

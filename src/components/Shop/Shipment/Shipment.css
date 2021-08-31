@@ -1,20 +1,21 @@
-.ship-form{
-    margin:30px 100px;
+.ship-form {
+  margin: 30px 100px;
+  overflow: hidden;
 }
 .ship-form input {
-    display: block;
-    margin-top: 30px;
-    padding: 5px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    width: 300px;
+  display: block;
+  margin-top: 30px;
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 300px;
 }
-.error{
-    color: red;
+.error {
+  color: red;
 }
 .payment-area {
-    justify-content: center;
-    background-color: rgb(203, 245, 238);
+  justify-content: center;
+  background-color: rgb(203, 245, 238);
 }
 
 .no-arrow {

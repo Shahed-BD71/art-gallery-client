@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import Navbar from '../../Shared/Navbar/Navbar'
 import "./Shipment.css";
-import { useContext } from "react";
-import { UserContext } from "../../../App";
 import { getDatabaseCart, processOrder } from "../../../utilities/databaseManager";
 import ProcessPayment from "./ProcessPayment/ProcessPayment";
+const user = JSON.parse(localStorage.getItem('user'));
 
 const Shipment = () => {
   const { register, handleSubmit} = useForm();
@@ -14,9 +14,6 @@ const Shipment = () => {
     address: " ",
     phone: " "
 };
-
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-  console.log(loggedInUser)
   const [shippingData, setShippingData] = useState(null);
 
   const handlePaymentSuccess = (paymentId) => {
@@ -24,7 +21,7 @@ const Shipment = () => {
     const savedCart = getDatabaseCart();
     console.log(savedCart)
     const orderDetails = {
-      ...loggedInUser,
+      ...user,
       products: savedCart,
       shipment: shippingData,
       paymentId,
@@ -57,7 +54,9 @@ const Shipment = () => {
 
 
   return (
-    <div className="row">
+    <section style={{overflow: 'hidden'}}>
+      <Navbar/>
+      <div className="row">
       <div
         style={{ display: shippingData ? "none" : "block" }}
         className="col-md-6 m-3"
@@ -66,7 +65,7 @@ const Shipment = () => {
           <input
             type="text"
             name="name"
-            defaultValue={loggedInUser.name}
+            defaultValue={user.name}
             {...register("name", { required: true })}
             placeholder="Your Name"
           />
@@ -75,7 +74,7 @@ const Shipment = () => {
           <input
             type="email"
             email="email"
-            defaultValue={loggedInUser.email}
+            defaultValue={user.email}
             {...register("email", { required: true })}
             placeholder="Your Email"
           />
@@ -111,7 +110,8 @@ const Shipment = () => {
         <ProcessPayment handlePayment={handlePaymentSuccess}></ProcessPayment>
         <br></br>
       </div>
-    </div>
+     </div>
+    </section>
   );
 };
 
